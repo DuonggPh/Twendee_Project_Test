@@ -1,6 +1,6 @@
-// src/UserList.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../style/App.css"; // Import CSS styles
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -17,33 +17,32 @@ const UserList = () => {
     const sortedUsers = response.data.results.sort((a, b) => {
       const nameA = `${a.name.first} ${a.name.last}`.toUpperCase();
       const nameB = `${b.name.first} ${b.name.last}`.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+      return nameA.localeCompare(nameB);
     });
     setUsers(sortedUsers);
   };
 
   const nextPage = () => {
-    if (currentPage <= 10) {
+    if (currentPage < 10) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   const prevPage = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
+
   const startIndex = (currentPage - 1) * 10 + 1;
+
   return (
-    <div>
+    <div className="container">
       <h1>User List</h1>
       <table>
         <thead>
           <tr>
+            <th>#</th>
             <th>Full Name</th>
             <th>Username</th>
             <th>Thumbnail</th>
@@ -62,7 +61,7 @@ const UserList = () => {
           ))}
         </tbody>
       </table>
-      <div>
+      <div className="pagination">
         <button onClick={prevPage} disabled={currentPage === 1}>
           Previous
         </button>
@@ -78,5 +77,4 @@ const UserList = () => {
     </div>
   );
 };
-
 export default UserList;
