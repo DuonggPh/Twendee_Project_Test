@@ -1,64 +1,158 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
 .container {
-    width: 75%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    color: #333;
-  }
-  
-  td img {
-    border-radius: 50%;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .pagination button {
-    margin: 0 5px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .pagination span {
-    margin: 0 5px;
-    font-weight: normal;
-    color: #007bff;
-  }
-  
-  .pagination .bold {
-    font-weight: bold;
-    color: #333;
-  }
-  
+  background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
+  max-width: 100%;
+  height: 1000px;
+  margin: 0 auto;
+  /* padding-top: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userTable {
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 80%;
+  margin: 0 auto; /* Để căn giữa table */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1100px; /* Giới hạn chiều rộng của table */
+}
+
+table {
+  /* width: 100%; */
+  border-collapse: collapse;
+  margin: 0 auto; 
+}
+
+h1, h2{
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px; /* Thêm margin dưới cho tiêu đề */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Để căn giữa table */
+
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 10%; /* Đặt chiều rộng cụ thể cho cột đầu tiên */
+}
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(3),
+td:nth-child(3) {
+  width: 35%; /* Chia đều không gian cho ba cột còn lại */
+}
+th:nth-child(4),
+td:nth-child(4) {
+  width: 20%; /* Chia đều không gian cho ba cột còn lại */
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+td img {
+  border-radius: 50%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #dd3d8d;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination span {
+  margin: 0 5px;
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination span:hover {
+  background-color: rgb(117, 77, 94);
+  color: white;
+}
+
+.pagination .active {
+  background-color: #dd3d8d;
+  color: white;
+  /* border: 1px solid #007bff; */
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.thumbnail{
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content p {
+  margin: 5px 0;
+}
+
+.modal img {
+  display: block;
+  margin: 10px auto;
+  border-radius: 50%;
+}
+
+/* Close button for modal */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
